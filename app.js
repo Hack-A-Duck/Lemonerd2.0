@@ -176,7 +176,7 @@ function manageData(data){
       document.getElementById('updateblog').onclick=function(){
 
   database.ref("Blog/"+k).update({
-    author: document.getElementById("author1").value,
+    author: document.getElementById("author1").value ,
     postTitle: document.getElementById("postTitle1").value,
     postContent: document.getElementById("postContent1").value,
     postDate: document.getElementById("postDate1").value,
@@ -190,6 +190,8 @@ function manageData(data){
 
      var btn2 = document.createElement('button');
      btn2.setAttribute('class','btn btn-danger btn-margin btn-lg');
+     btn2.setAttribute('data-toggle','modal');
+     btn2.setAttribute('data-target','#deleteModal');
      
      btn2.onclick=function(){
      
@@ -212,10 +214,7 @@ function manageData(data){
 
 
        
-       var close = document.getElementById('cancelblg');
-       close.onclick = function(){
-         model.style.display = "none";
-        }
+       
         
         var del = document.getElementById('deleteblg');
         del.onclick = function(){
@@ -225,13 +224,7 @@ function manageData(data){
           
         }
         
-        model.style.display= "block";
-        window.onclick = function(event) {
-          if (event.target == model) {
-          model.style.display = "none";
-        }
-      }
-
+    
       
      }
      btn2.textContent="Delete";
