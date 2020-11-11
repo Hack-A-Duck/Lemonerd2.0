@@ -1,12 +1,12 @@
 // Your web app's Firebase configuration
 var firebaseConfig = {
   apiKey: "AIzaSyBYn9Oa9k4h8rXY3T2JeMXWugdtqzauZ0A",
-  authDomain: "lemonerd-2-0.firebaseapp.com",
-  databaseURL: "https://lemonerd-2-0.firebaseio.com",
-  projectId: "lemonerd-2-0",
-  storageBucket: "lemonerd-2-0.appspot.com",
-  messagingSenderId: "1040285044928",
-  appId: "1:1040285044928:web:bbcdb8f2a57de63b385d25"
+    authDomain: "lemonerd-2-0.firebaseapp.com",
+    databaseURL: "https://lemonerd-2-0.firebaseio.com",
+    projectId: "lemonerd-2-0",
+    storageBucket: "lemonerd-2-0.appspot.com",
+    messagingSenderId: "1040285044928",
+    appId: "1:1040285044928:web:bbcdb8f2a57de63b385d25"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
@@ -18,18 +18,115 @@ firebase.initializeApp(firebaseConfig);
 
 var database = firebase.database();
 
+
 var ref = database.ref("Blog")
+
+var ImgName, ImgUrl,imgsrc;
+  var files= [];
+  var files1=[];
+  var reader ;
+
+
+function select(e)
+{
+
+  
+  var input =document.createElement('input');
+  input.type='file';
+  
+  
+  input.onchange = e =>{
+    files =e.target.files;
+    reader= new FileReader();
+    reader.onload = function()
+    {
+      document.getElementById("blogimg").src = reader.result;
+      document.getElementById("blogimg").style.display="block";
+
+    }
+    reader.readAsDataURL(files[0]);
+  }
+  input.click();
+}
+
+
+function selectedit(e)
+{
+
+  
+  var input =document.createElement('input');
+  input.type='file';
+  
+  
+  input.onchange = e =>{
+    files =e.target.files;
+    reader= new FileReader();
+    reader.onload = function()
+    {
+      document.getElementById("editimg").src = reader.result;
+      
+
+    }
+    reader.readAsDataURL(files[0]);
+  }
+  input.click();
+}
+
+
+function upload()
+{
+  
+  
+
+  let imgname=document.getElementById("postTitle1").value+document.getElementById("postDate1").value;
+  
+  
+ var upload=firebase.storage().ref('Blogimages/'+imgname).put(files[0]);
+
+ upload.on('state_changed' ,function(snapshot){
+   var progress = (snapshot.bytesTransferred / snapshot.totalBytes)*100;
+
+   document.getElementById('progress').style.width=progress+"%";
+   document.getElementById('progress').textContent=progress+"%";
+
+ }
+ ,
+ function(error){
+   alert('error in saving');
+ },
+
+function(){
+  upload.snapshot.ref.getDownloadURL().then(function(url){
+    ImgUrl=url;
+  })
+} 
+)
+
+
+}
+
+
+
+
+
+
 function writeData() {
+
+ 
 
   database.ref("Blog").push({
     author: document.getElementById("author").value,
     postTitle: document.getElementById("postTitle").value,
     postContent: document.getElementById("postContent").value,
     postDate: document.getElementById("postDate").value,
+    img:ImgUrl,
+    hidden : 'no',
   })
-
+  alert('New Blog Uploaded')
   window.location.reload();
 }
+
+
 
 
 
@@ -47,7 +144,11 @@ function gotData(data) {
     var blogContent = blog[k].postContent;
     var blogDate = blog[k].postDate;
     var blogTitle = blog[k].postTitle;
-
+    var blogImg = blog[k].img;
+    if(blog[k].hidden=="yes")
+    {
+      continue;
+    }
 
 
     // console.log(author);
@@ -61,14 +162,14 @@ function gotData(data) {
     var myParent = document.getElementById('allblogs');
    
     var myInnerDiv = document.createElement('div');
-    myInnerDiv.setAttribute('class', 'card border-dark mb-3');
+    myInnerDiv.setAttribute('class', 'card1 text-dark border-light mb-3');
    
     
     myParent.append(myInnerDiv);
 
 
     var innerdiv = document.createElement('div');
-    innerdiv.setAttribute('class', 'card-body text-dark');
+    innerdiv.setAttribute('class', 'card-body ');
     myInnerDiv.append(innerdiv);
 
     var h5 = document.createElement('h5');
@@ -86,6 +187,12 @@ function gotData(data) {
     cite.setAttribute('title', 'Source Title');
     cite.textContent =  author;
     footer.append(cite);
+
+    var img = new Image(); 
+    img.src =  blogImg; 
+    img.setAttribute("class","img-fluid");
+    // console.log(img.src);
+    innerdiv.appendChild(img); 
 
     var p = document.createElement('p');
     p.setAttribute('class', 'card-text');
@@ -115,7 +222,7 @@ function manageData(data){
     var blogContent = blog[k].postContent;
     var blogDate = blog[k].postDate;
     var blogTitle = blog[k].postTitle;
-
+    let blogImg = blog[k].img;
 
     // console.log(author);
     // console.log(blogTitle);
@@ -125,7 +232,7 @@ function manageData(data){
     var blogManage = document.getElementById('blogManage');
 
     var child = document.createElement('div');
-    child.setAttribute('class','card border-info mb-3');
+    child.setAttribute('class','card2 mb-3');
     blogManage.append(child); 
 
      var child1 = document.createElement('div');
@@ -149,6 +256,11 @@ function manageData(data){
      cit.textContent =  author;
      child5.append(cit);
      
+     let imga = new Image(); 
+     console.log(blogImg);
+    imga.src =  blogImg; 
+    imga.setAttribute("class","img-fluid");
+    child1.appendChild(imga); 
      
      var child4 = document.createElement('p');
      child4.setAttribute('class','card-text');
@@ -160,7 +272,7 @@ function manageData(data){
      child1.append(child6);
 
      var btn1 = document.createElement('button');
-     btn1.setAttribute('class','btn btn-info btn-margin btn-lg');
+     btn1.setAttribute('class','btn btn-margin ');
      btn1.setAttribute('type','button');
      btn1.setAttribute('data-toggle','modal');
      btn1.setAttribute('data-target','#editModal');
@@ -172,6 +284,40 @@ function manageData(data){
      document.getElementById('postTitle1').setAttribute('value',blog[k].postTitle);
      document.getElementById('postContent1').textContent=blog[k].postContent;
      document.getElementById('postDate1').setAttribute('value',blog[k].postDate);
+     document.getElementById('editimg').setAttribute('src',blog[k].img);
+
+     var del = document.getElementById('uploadedit');
+     del.onclick = function(){
+       console.log("hekko");
+      let imgname=document.getElementById("postTitle1").value+document.getElementById("postDate1").value;
+  
+  
+      var upload=firebase.storage().ref('Blogimages/'+imgname).put(files[0]);
+     
+      upload.on('state_changed' ,function(snapshot){
+        var progress = (snapshot.bytesTransferred / snapshot.totalBytes)*100;
+     
+        document.getElementById('progress1').style.width=progress+"%";
+        document.getElementById('progress1').textContent=progress+"%";
+     
+      }
+      ,
+      function(error){
+        alert('error in saving');
+      },
+     
+     function(){
+       upload.snapshot.ref.getDownloadURL().then(function(url){
+        database.ref("Blog/"+k).update({
+         
+          img:url,
+        })
+       })
+     } 
+     )
+       
+     }
+
 
       document.getElementById('updateblog').onclick=function(){
 
@@ -180,6 +326,7 @@ function manageData(data){
     postTitle: document.getElementById("postTitle1").value,
     postContent: document.getElementById("postContent1").value,
     postDate: document.getElementById("postDate1").value,
+    
   })
 
   window.location.reload();
@@ -189,7 +336,7 @@ function manageData(data){
      child6.append(btn1);
 
      var btn2 = document.createElement('button');
-     btn2.setAttribute('class','btn btn-danger btn-margin btn-lg');
+     btn2.setAttribute('class','btn  btn-margin');
      btn2.setAttribute('data-toggle','modal');
      btn2.setAttribute('data-target','#deleteModal');
      
@@ -206,7 +353,9 @@ function manageData(data){
        
        var modeltitle = document.getElementById('modelfooter');
        modeltitle.textContent=blog[k].postDate + " by " + blog[k].author;
-
+       var modelimg = document.getElementById('deleteimg');
+       modelimg.src=blog[k].img;
+       modelimg.setAttribute('class','modalimg')
        var modeltitle = document.getElementById('modelcontent');
        modeltitle.textContent=blog[k].postContent;
 
@@ -229,9 +378,32 @@ function manageData(data){
      }
      btn2.textContent="Delete";
      child6.append(btn2);
-   
+     var btn3 = document.createElement('button');
+     btn3.setAttribute('class','btn  btn-margin');
 
+     btn3.textContent=" Hide ";
+     if(blog[k].hidden=="no")
+     {
+       btn3.onclick=function(){
+        database.ref("Blog/"+k).update({
+          hidden: "yes",
+        })
+        window.location.reload();
+       }
+     }
 
+     if(blog[k].hidden=="yes")
+     {
+       btn3.textContent=" Unhide ";
+       btn3.onclick=function(){
+        database.ref("Blog/"+k).update({
+          hidden: "no",
+        })
+        window.location.reload();
+       }
+     }
+     
+     child6.append(btn3);
 
 
 

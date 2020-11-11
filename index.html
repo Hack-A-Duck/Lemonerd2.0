@@ -2,7 +2,8 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/7d256e988c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./images/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <meta charset="UTF-8">
@@ -10,68 +11,148 @@
     <title>Lemonerd</title>
     <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-storage.js"></script>
+    
 
     <script src="app.js"></script>
     <script src="create.js"></script>
 </head>
 
-<body>
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
-            <img src="./icon copyicon.png" width="35" height="30" class="d-inline-block align-top" alt=""
-                loading="lazy">
-            LEMONERD
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-link active" href="#">Home</a>
-                <a class="nav-link" href="about.html">About</a>
-                <a class="nav-link" href="publish.html">Admin Login</a>
-
+<body class="index"  >
+    
+    <div class="jumbotron-flex jumotron" >
+        <div class="innerindex ">
+            <br>
+            <nav class="navbar   navbar-expand-lg navbar-light nav-bg">
+                <h1 class="navbar-bran" >
+                    
+                    Lemonerd
+                </h1>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav  mr-auto">
+                      <li class="nav-item ">
+                        <a class="nav-link active " href="index.html">Home </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link " href="about.html">About</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link " href="publish.html">Admin Login</a>
+                      </li>
+                    </ul>
+                    <span class="navbar-text social">
+                        <div class="nav-social ">
+                            <a href="facebook.com" class="social"><i class="fab fa-facebook-f"></i></a>
+                            <a href="twittwe.com" class="social"><i class="fab fa-twitter"></i></a>
+                            <a href="intagram.com" class="social"><i class="fab fa-instagram"></i></a>
+                            <a href="linkedin.com" class="social"><i class="fab fa-linkedin-in"></i></a>
+                          </div>
+                    </span>
+              
+               
+            </nav>
             </div>
-        </div>
-    </nav>
-    <br><br>
+
+        
+    <div class="text-center content">
+  <h1 class="display "  >Lemonerd</h1>
+  
+  <p><span>  The Ultimate Blogging Destination</span></p><br><br>
+  <a href="#next"><button type="button" class="btn btn-lg but">Know More &gt;</button></a>
+  
+</div>
 
 
+</div>
+<div class="card-group" id="next">
+    <div class="card  text-center ">
+      
+      <div class="card-body mar">
+        <h5 class="card-title">Blogs</h5>
+        <p class="card-text"><i class="far fa-edit"></i></p>
+      </div>
+      
+    </div>
+    <div class="card text-center">
+     
+      <div class="card-body mar">
+        <h5 class="card-title">Articles</h5>
+        <p class="card-text"><i class="far fa-newspaper"></i></p>
+      </div>
+      
+    </div>
+    <div class="card text-center">
+    
+      <div class="card-body">
+        <h5 class="card-title">Recreation</h5>
+        <p class="card-text"><i class="fas fa-icons"></i></p>
+      </div>
+      
+    </div>
+  </div>
+<br><br><br>
+<div class="indexblogs ">
+    <div id="allblogs" class="container-fluid ">
 
 
-
-
-    <div id="allblogs" class="container-xl">
-
-
-        <div class="card border-dark mb-3">
-            <div class="card-body text-dark">
+        <!-- <div class="card1 text-dark border-light mb-3">
+            <div class="card-body ">
                 <h5 class="card-title">Dark card title</h5>
                 <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite>
                 </footer>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                     card's content. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis doloremque alias
                     quidem, incidunt cum voluptate consequuntur voluptates maiores? Corporis, vero nostrum magni,
-                    placeat explicabo fuga consequuntur a delectus itaque nobis ipsum dicta magnam reprehenderit
-                    voluptatum neque necessitatibus soluta est amet ab veritatis nam error. Similique soluta unde eos
-                    recusandae, consequatur optio magni tempore officia, corporis aliquid laboriosam, id error sapiente
-                    asperiores sit libero architecto tenetur facilis ad tempora. Quaerat sint voluptatibus ipsam
-                    delectus veritatis, reprehenderit officia quo ullam maiores quisquam commodi similique
+                    placeat explicabo fuga consequuntur a delectus itaque nobis ipsum dicta magnam re
                     necessitatibus expedita assumenda voluptatum error et inventore eveniet ex. Commodi incidunt
                     deserunt hic dolores dolore magnam cumque doloremque.</p>
             </div>
-        </div>
-    </div>
+        </div> -->
+
+       
+    </div></div>
+
 
     <script>firebase.database().ref("Blog").on('value', gotData, errData);
     </script>
     </div>
-    <script>
-
-    </script>
-
+   <br><br>
+<div class="inner-footer">
+    <nav class="navbar navbar-expand-lg navbar-light nav-bg">
+        <h1 class="navbar-bran" href="./root.html">
+            
+            Subscribe!
+        </h1>
+        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button> -->
+        <!-- <div class="collapse navbar-collapse" id="navbarText"> -->
+            <ul class="navbar-nav  mr-auto">
+              <li class="nav-item ">
+                <a class="nav-link active" href="index.html">Home </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="about.html">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="publish.html">Admin Login</a>
+              </li>
+            </ul>
+            <span class="navbar-text social">
+                <div class="nav-social ">
+                    <a href="facebook.com" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="twittwe.com" class="social"><i class="fab fa-twitter"></i></a>
+                    <a href="intagram.com" class="social"><i class="fab fa-instagram"></i></a>
+                    <a href="linkedin.com" class="social"><i class="fab fa-linkedin-in"></i></a>
+                  </div>
+            </span>
+      
+       
+    </nav>
+    </div>
 
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
