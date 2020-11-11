@@ -1,5 +1,7 @@
 # Lemonerd2.0
-HACK-A-DUCK HAKATHON 
+HACK-A-DUCK HACKATHON 
+TEAM NAME- Lemonerd
+PARTICIPANTS- Harshavardhana Singh, Tejaswini Singh
 
 This is a blogging website with integrated CMS.
 
