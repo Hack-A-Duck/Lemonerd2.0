@@ -300,10 +300,10 @@ nav .nav-link:hover{
 
 .display{
     font-family: 'Great Vibes', cursive;
-    font-size: 1200%;
+    font-size:10vw;
     text-shadow: 2px 4px #ee5b76;
     align-items: center ;
-    margin-top: 12vh;
+    margin-top: 10vh;
     font-weight: 900;
     color: white;
   
