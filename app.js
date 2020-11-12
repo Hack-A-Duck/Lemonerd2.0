@@ -334,6 +334,9 @@ function manageData(data){
      
     }
      child6.append(btn1);
+     var editicon=document.createElement('i');
+     editicon.setAttribute('class','far fa-edit');
+     btn1.prepend(editicon);
 
      var btn2 = document.createElement('button');
      btn2.setAttribute('class','btn  btn-margin');
@@ -376,12 +379,21 @@ function manageData(data){
     
       
      }
-     btn2.textContent="Delete";
+     btn2.textContent=" Delete";
      child6.append(btn2);
+      var deleteicon=document.createElement('i');
+     deleteicon.setAttribute('class','far fa-trash-alt');
+     btn2.prepend(deleteicon);
+
+
+
+
      var btn3 = document.createElement('button');
      btn3.setAttribute('class','btn  btn-margin');
-
+     var hideicon=document.createElement('i');
+     hideicon.setAttribute('class','far fa-eye-slash');
      btn3.textContent=" Hide ";
+     btn3.prepend(hideicon);
      if(blog[k].hidden=="no")
      {
        btn3.onclick=function(){
@@ -404,10 +416,7 @@ function manageData(data){
      }
      
      child6.append(btn3);
-
-
-
-
+    
   }
 }
 
