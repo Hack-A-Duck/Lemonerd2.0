@@ -15,10 +15,13 @@
   <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-storage.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     
   <script src="app.js"></script>
-  <script src="create.js"></script>
-
+ 
   <div class="inner ">
     <nav class="navbar  navbar-expand-lg navbar-light nav-bg">
         <h1 class="navbar-bran" href="./root.html">
@@ -232,6 +235,49 @@
 
 
 
+<!-- Login Moodal -->
+<div class="modal background-login fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Hey, Welcome to the Admin Console</h5>
+       
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Username</label>
+            <input type="email" class="form-control" id="loginUsername" aria-describedby="emailHelp" placeholder="username">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="loginPassword" placeholder="password">
+          </div>
+          
+        </form>
+        <div class="alert alert-danger" style="display: none;" id="incorrect" role="alert">
+          Oops, Your Login Credentials do not Match 
+        </div>
+        <div class="alert alert-success" style="display: none;" id="correct" role="alert">
+          Hey, Welcome Back
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="./index.html">
+        <button type="button" class="btn btn-secondary" >Close</button></a>
+        <button type="button" id="cLogin" class="btn btn-secondary" id="cLogin" onclick="login()">Login</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    $('#loginModal').modal('show');
+  })
+  $('#loginModal').modal({backdrop: 'static', keyboard: false})
+</script>
+
 
 <div class="inner-footer">
   <nav class="navbar navbar-expand-lg navbar-light nav-bg">
@@ -266,12 +312,7 @@
      
   </nav>
   </div>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-    crossorigin="anonymous"></script>
+ 
 </body>
 
 </html>

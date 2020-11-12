@@ -380,3 +380,8 @@ nav .nav-link:hover{
     border-right: rgba(0, 0, 0, 0.1) solid;
 }
 
+.background-login{
+    /* background-color: black; */
+    backdrop-filter: blur(6px);
+
+}

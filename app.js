@@ -417,3 +417,24 @@ function errData(data) {
   console.log(data);
 }
 
+
+
+// var login = document.getElementById("cLogin");
+// console.log(login);
+ function login(){
+  
+  var username= document.getElementById("loginUsername").value;
+  var password = document.getElementById("loginPassword").value;
+  if(username=="adminauthor" && password=="authoradmin")
+  {
+    document.getElementById('correct').style.display="block"
+     $('#loginModal').modal('toggle');
+$('body').removeClass('modal-open');
+$('body').css('padding-right', '0px');
+$('.modal-backdrop').remove();
+  }
+  else{
+    document.getElementById('incorrect').style.display="block"
+  }
+
+}
