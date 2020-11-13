@@ -6,4 +6,4 @@ PARTICIPANTS- Harshavardhana Singh, Tejaswini Singh
 This is a blogging website with integrated CMS.
 
 # The link to the page
-https://harsh27vardhana.github.io/Lemonerd2.0/
+https://hack-a-duck.github.io/Lemonerd2.0/
